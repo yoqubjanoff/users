@@ -3,15 +3,17 @@ import Header from "../../components/Header/indes";
 import { Outlet } from "react-router-dom";
 import Footer from "../../components/Footer";
 import useFetch from "../../hooks/useFetch";
+import { API_URL } from "../../services/api";
+import Loading from "../../components/ReuseAble/Loading";
 
 const MainLayout = () => {
   const { data, loading, error } = useFetch(
-    "https://6548a42bdd8ebcd4ab234d7e.mockapi.io/product"
+    API_URL
   );
   return (
     <>
       {loading ? (
-        <div>loading......</div>
+        <Loading/>
       ) : (
         
         <>

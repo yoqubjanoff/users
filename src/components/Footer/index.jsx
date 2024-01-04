@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className='w-full pt-40 pb-3' >
+    <footer className='border w-full pt-10 pb-3' >
         <div className='w-full max-w-[1320px] mx-auto'>
             <ul className='w-full flex justify-between'>
                 <li className='flex flex-col gap-3'>
                     <Link to='/'>HOME</Link>
-                    <Link to='/'>HOME</Link>
+                    <Link to='/add'>ADD</Link>
                     <Link to='/'>HOME</Link>
                     <Link to='/'>HOME</Link>
                     <Link to='/'>HOME</Link>

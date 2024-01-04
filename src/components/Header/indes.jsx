@@ -13,7 +13,7 @@ const Header = () => {
             <nav className='w-full max-w-[520px] flex items-center justify-between'>
                 <Link to='/'>HOME
                 </Link> 
-                <Link to='/'>ABOUT
+                <Link to='/add'>ADD
                 </Link>
                 <Link to='/'>BLOG
                 </Link>
