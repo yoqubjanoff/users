@@ -7,7 +7,7 @@
   import { useUserContext } from "../../context";
 
   const Add = () => {
-    const [state] = useUserContext();
+    const [state, dispatch] = useUserContext();
     const { selected } = state;
 
     const [getdata, setGetdata] = useState({
@@ -35,6 +35,14 @@
               type: 'setSelected',
               payload: {},
             });
+            setGetdata({
+              name: "",
+              avatar: "",
+              price: 0,
+              description: "",
+              manufacture: "",
+              size: 0,
+            });
             toast.success("Data has been sent successfully");
           })
           .catch((error) => {
@@ -53,29 +61,35 @@
           return;
         }
     
-      fetch(API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(getdata),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({
-            type: 'setSelected',
-            payload: {},
-          });
-          toast.success("Data has been sent successfully");
+        fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(getdata),
         })
-        .catch((error) => {
-          toast.error("An error occurred");
-        });}
+          .then((response) => response.json())
+          .then((data) => {
+            dispatch({
+              type: 'setSelected',
+              payload: {},
+            });
+            setGetdata({
+              name: "",
+              avatar: "",
+              price: 0,
+              description: "",
+              manufacture: "",
+              size: 0,
+            });
+            toast.success("Data has been sent successfully");
+          })
+          .catch((error) => {
+            toast.error("An error occurred");
+          });
+      }
     };
     
-    console.log(getdata);
-
-
     return (
       <section className="w-ful pt-10 pb-10 ">
         <div className="w-full flex flex-col items-center max-w-[1320px] mx-auto">
