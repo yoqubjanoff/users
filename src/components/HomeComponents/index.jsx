@@ -6,13 +6,14 @@ import { API_URL } from "../../services/api";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useUserContext } from "../../context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const Hero = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [state, dispatch] = useUserContext();
   const { users } = state;
+  const {id} = useParams()
 
 
   const navigate = useNavigate()
@@ -63,8 +64,8 @@ const Hero = () => {
   const handleEdit = (user) => {
     dispatch({ type: 'setSelected', payload: user });
     navigate('/add')
-
   };
+
 
   return (
     <section className="w-full pt-10 pb-3">
@@ -83,6 +84,7 @@ const Hero = () => {
                 <p className="text-gray-600">{item.description}</p>
                 <p className="text-gray-600">{item.manufacture}</p>
                 <p className="text-blue-500 mt-2">Price: ${item.price}</p>
+                <p className="text-blue-500 mt-2">Size: {item.size}</p>
                 <div className="mt-5 w-full flex justify-between">
                   <button onClick={() => handleDelete(item.id)}>
                     <img className="w-22 h-5" src={delet} alt="delet img" />
